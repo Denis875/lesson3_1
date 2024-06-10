@@ -2,15 +2,17 @@ package com.example.lesson3_1.service;
 
 import com.example.lesson3_1.model.User;
 import com.example.lesson3_1.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserRepository userDao;
+    private final UserRepository userDao;
+
+    public UserServiceImpl(UserRepository userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     public void add(User user) {

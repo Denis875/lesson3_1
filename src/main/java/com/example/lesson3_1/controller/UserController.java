@@ -2,7 +2,6 @@ package com.example.lesson3_1.controller;
 
 import com.example.lesson3_1.model.User;
 import com.example.lesson3_1.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -13,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
-    @Autowired
-    private UserService us;
+    private final UserService us;
+
+    public UserController(UserService us) {
+        this.us = us;
+    }
 
     @GetMapping(name = "/")
     public String startPage() {
